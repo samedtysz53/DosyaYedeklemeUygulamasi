@@ -167,7 +167,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Setup"
         "ProductCode" = "8:{78145162-30A1-4AB2-9CED-88E65FC0F6D6}"
-        "PackageCode" = "8:{6A774C16-4E0B-4A1A-A38D-E7377D736086}"
+        "PackageCode" = "8:{428DB837-F599-4149-8E10-8CFF7E1419A4}"
         "UpgradeCode" = "8:{EF8E6BBC-C303-4E42-8E60-4CB4D728F19E}"
         "AspNetVersion" = "8:"
         "RestartWWWService" = "11:FALSE"
@@ -287,20 +287,6 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_7996DC49873D4E12A8B58F363922A76F"
-            {
-            "Name" = "8:Shortcut to Öğeleri Yayımla from DosyaYedeklemeUygulamasi (Active)"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_1E98C79976074D1CAD85E36ED8EC8BE1"
-            "Folder" = "8:_CE2AF109F6A240ED9F0B622BCA78B985"
-            "WorkingFolder" = "8:_CE2AF109F6A240ED9F0B622BCA78B985"
-            "Icon" = "8:_C45C97E43C884F65B4D2613785B20A2B"
-            "Feature" = "8:"
-            }
         }
         "UserInterface"
         {
