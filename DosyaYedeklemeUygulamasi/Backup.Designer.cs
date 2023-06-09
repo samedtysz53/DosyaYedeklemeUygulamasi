@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Backup));
             progreslbl = new Label();
             progressBar = new ProgressBar();
             txtDestination = new TextBox();
@@ -44,9 +45,9 @@
             progreslbl.AutoSize = true;
             progreslbl.Location = new Point(482, 101);
             progreslbl.Name = "progreslbl";
-            progreslbl.Size = new Size(38, 15);
+            progreslbl.Size = new Size(17, 15);
             progreslbl.TabIndex = 17;
-            progreslbl.Text = "label1";
+            progreslbl.Text = "%";
             // 
             // progressBar
             // 
@@ -140,6 +141,7 @@
             Controls.Add(backupButton);
             Controls.Add(btnSelectDestination);
             Controls.Add(btnSelectSource);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Backup";
             Text = "Backup";
             Load += Backup_Load;

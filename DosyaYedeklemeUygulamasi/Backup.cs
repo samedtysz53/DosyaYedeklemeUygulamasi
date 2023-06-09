@@ -98,7 +98,7 @@ namespace DosyaYedeklemeUygulamasi
                     progressBar.Value = filesProcessed;
                     progreslbl.Text = progressBar.Value.ToString();
                     int percentage = (int)((float)filesProcessed / totalFiles * 100);
-                    progreslbl.Text =percentage.ToString() + "%";//progressbar yüzdesini label da göster
+                    progreslbl.Text = percentage.ToString() + "%";//progressbar yüzdesini label da göster
                     Application.DoEvents();
                 }
 
