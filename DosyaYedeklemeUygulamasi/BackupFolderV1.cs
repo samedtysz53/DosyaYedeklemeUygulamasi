@@ -2,41 +2,46 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace DosyaYedeklemeUygulamasi
 {
-    public partial class Backup : Form
+    public partial class BackupFolderV1 : Form
     {
         public string Source;
         public string Target;
         private int totalFiles;
         private int filesProcessed;
-        public Backup()
+        public BackupFolderV1()
         {
             InitializeComponent();
         }
 
-        private void Backup_Load(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-
+            SystemImage systemImage = new SystemImage();
+            systemImage.Show();
         }
 
-        private void btnSelectSource_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog dialog = new FolderBrowserDialog();
             dialog.ShowDialog();
             Source = dialog.SelectedPath;
             txtSource.Text = Source;
-
         }
 
-        private void btnSelectDestination_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog dialog = new FolderBrowserDialog();
             dialog.ShowDialog();
@@ -44,7 +49,7 @@ namespace DosyaYedeklemeUygulamasi
             txtDestination.Text = Target;
         }
 
-        private void btnBackup_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)
         {
             string sourceFolder = txtSource.Text;
             string destinationFolder = txtDestination.Text;
@@ -57,12 +62,11 @@ namespace DosyaYedeklemeUygulamasi
             progressBar.Value = 0;
 
             // Yedekleme işlemini başlat
-            BackupFolder(sourceFolder, destinationFolder);
+            BackupFolders(sourceFolder, destinationFolder);
 
             // Yedekleme tamamlandığında mesaj göster
             MessageBox.Show("Yedekleme tamamlandı.");
         }
-
         private int CountFiles(string directory)
         {
             int count = Directory.GetFiles(directory).Length;
@@ -77,7 +81,7 @@ namespace DosyaYedeklemeUygulamasi
         }
 
 
-        private void BackupFolder(string sourceFolder, string destinationFolder)
+        private void BackupFolders(string sourceFolder, string destinationFolder)
         {
             try
             {
@@ -113,7 +117,7 @@ namespace DosyaYedeklemeUygulamasi
                     Directory.CreateDirectory(destinationPath);
 
                     // Alt dizini ve içeriğini yedekle
-                    BackupFolder(subDirectory, destinationPath);
+                    BackupFolders(subDirectory, destinationPath);
                 }
             }
             catch (Exception ex)
@@ -122,7 +126,9 @@ namespace DosyaYedeklemeUygulamasi
             }
         }
 
-
+        private void BackupFolderV1_Load(object sender, EventArgs e)
+        {
+            string applicationDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "DosyaYedeklemeUygulamasi");
+        }
     }
 }
-
