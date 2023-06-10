@@ -53,8 +53,14 @@ namespace DosyaYedeklemeUygulamasi
         {
             string sourceFolder = txtSource.Text;
             string destinationFolder = txtDestination.Text;
-            totalFiles = CountFiles(sourceFolder);
+            if (string.IsNullOrEmpty(sourceFolder) || string.IsNullOrEmpty(destinationFolder))
+            {
+                MessageBox.Show("lütfen hedef dizin ve kaynak dizin belirtin");
 
+            }
+            else { 
+
+            totalFiles = CountFiles(sourceFolder);
             // İlerleme çubuğunu hazırla
             progressBar.Minimum = 0;
             progressBar.Maximum = totalFiles;
@@ -62,10 +68,16 @@ namespace DosyaYedeklemeUygulamasi
             progressBar.Value = 0;
 
             // Yedekleme işlemini başlat
-            BackupFolders(sourceFolder, destinationFolder);
+            if (sourceFolder != null && destinationFolder != null)
+            {
+                // Yedekleme işlemini başlat
+                BackupFolders(sourceFolder, destinationFolder);
+            }
+            else { MessageBox.Show("lütfen hedef dizin ve kaynak dizin belirtin"); }
 
             // Yedekleme tamamlandığında mesaj göster
             MessageBox.Show("Yedekleme tamamlandı.");
+            }
         }
         private int CountFiles(string directory)
         {

@@ -48,16 +48,22 @@ namespace DosyaYedeklemeUygulamasi
         {
             string sourceFolder = txtSource.Text;
             string destinationFolder = txtDestination.Text;
-            totalFiles = CountFiles(sourceFolder);
-
+            if (sourceFolder != null && destinationFolder != null)
+            {
+                totalFiles = CountFiles(sourceFolder);
+            }
+            else { MessageBox.Show("lütfen hedef dizin ve kaynak dizin belirtin"); }
             // İlerleme çubuğunu hazırla
             progressBar.Minimum = 0;
             progressBar.Maximum = totalFiles;
             progressBar.Step = 1;
             progressBar.Value = 0;
-
-            // Yedekleme işlemini başlat
-            BackupFolder(sourceFolder, destinationFolder);
+            if (sourceFolder != null && destinationFolder != null)
+            {
+                // Yedekleme işlemini başlat
+                BackupFolder(sourceFolder, destinationFolder);
+            }
+            else { MessageBox.Show("lütfen hedef dizin ve kaynak dizin belirtin"); }
 
             // Yedekleme tamamlandığında mesaj göster
             MessageBox.Show("Yedekleme tamamlandı.");
@@ -79,6 +85,7 @@ namespace DosyaYedeklemeUygulamasi
 
         private void BackupFolder(string sourceFolder, string destinationFolder)
         {
+           
             try
             {
                 // Kaynak klasördeki dosyaları al
@@ -120,9 +127,10 @@ namespace DosyaYedeklemeUygulamasi
             {
                 MessageBox.Show("Hata oluştu: " + ex.Message);
             }
+            }
+            
         }
 
 
     }
-}
-
+ 
